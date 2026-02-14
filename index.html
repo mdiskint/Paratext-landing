@@ -1,0 +1,389 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Paratext Engine</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Crimson+Pro:ital,wght@0,300;0,400;0,600;1,300&family=DM+Sans:wght@300;400;500;600&family=JetBrains+Mono:wght@400;600;700&display=swap" rel="stylesheet">
+<style>
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html { scroll-behavior: smooth; }
+  body { background: #08080d; color: rgba(255,255,255,0.92); font-family: 'DM Sans', system-ui, sans-serif; }
+  ::selection { background: rgba(74,158,255,0.2); color: #fff; }
+  a { color: #4A9EFF; text-decoration: none; }
+  a:hover { opacity: 0.8; }
+
+  .mono { font-family: 'JetBrains Mono', monospace; }
+  .serif { font-family: 'Crimson Pro', Georgia, serif; }
+  .label { font-family: 'JetBrains Mono', monospace; font-size: 10px; color: rgba(255,255,255,0.4); text-transform: uppercase; letter-spacing: 1.5px; }
+  .section-wrap { max-width: 780px; margin: 0 auto; padding: 0 28px; }
+
+  .hero { min-height: 100vh; display: flex; align-items: center; justify-content: center; position: relative; overflow: hidden; }
+  .hero-glow { position: absolute; top: 20%; left: 50%; transform: translate(-50%,-50%); width: 550px; height: 550px; border-radius: 50%; background: radial-gradient(circle, rgba(74,158,255,0.06) 0%, rgba(180,142,255,0.02) 40%, transparent 70%); pointer-events: none; animation: float 8s ease infinite; }
+  @keyframes float { 0%,100% { transform: translate(-50%,-50%) scale(1); } 50% { transform: translate(-50%,-50%) scale(1.05); } }
+
+  .hero-inner { text-align: center; max-width: 680px; padding: 0 28px; position: relative; z-index: 1; }
+  .hero-tag { font-family: 'JetBrains Mono', monospace; font-size: 11px; letter-spacing: 3px; text-transform: uppercase; color: rgba(255,255,255,0.5); margin-bottom: 30px; }
+  .hero-title { font-family: 'Crimson Pro', Georgia, serif; font-size: clamp(36px, 5.5vw, 62px); font-weight: 300; line-height: 1.12; color: rgba(255,255,255,0.95); margin-bottom: 26px; }
+  .hero-title .gradient { background: linear-gradient(135deg, #4A9EFF 0%, #B48EFF 50%, #FF6B6B 100%); -webkit-background-clip: text; -webkit-text-fill-color: transparent; background-clip: text; }
+  .hero-sub { font-size: 18px; line-height: 1.8; color: rgba(255,255,255,0.65); max-width: 540px; margin: 0 auto 40px; font-weight: 300; }
+
+  .pills { display: flex; gap: 10px; justify-content: center; flex-wrap: wrap; margin-bottom: 44px; }
+  .pill { display: inline-flex; align-items: center; gap: 6px; padding: 5px 12px; border-radius: 20px; background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.08); }
+  .pill-dot { width: 7px; height: 7px; border-radius: 50%; display: inline-block; }
+  .pill-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; font-weight: 600; }
+  .pill-mode { font-size: 11px; color: rgba(255,255,255,0.65); }
+
+  .btn-row { display: flex; gap: 16px; justify-content: center; flex-wrap: wrap; }
+  .btn { padding: 14px 30px; border-radius: 10px; text-decoration: none; display: inline-block; font-size: 14px; transition: opacity 0.2s; }
+  .btn:hover { opacity: 0.85; }
+  .btn-primary { background: rgba(74,158,255,0.1); border: 1px solid rgba(74,158,255,0.25); font-family: 'JetBrains Mono', monospace; font-size: 13px; color: #4A9EFF; font-weight: 500; }
+  .btn-secondary { background: rgba(255,255,255,0.04); border: 1px solid rgba(255,255,255,0.1); color: rgba(255,255,255,0.7); }
+
+  .scroll-line { position: absolute; bottom: 36px; left: 50%; transform: translateX(-50%); width: 1px; height: 44px; background: linear-gradient(to bottom, rgba(255,255,255,0.12), transparent); }
+
+  .problem-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; max-width: 620px; }
+  .problem-card { padding: 16px 20px; border-radius: 12px; background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); }
+  .problem-card-title { font-family: 'JetBrains Mono', monospace; font-size: 11px; color: #4A9EFF; margin-bottom: 6px; font-weight: 600; }
+  .problem-card-desc { font-size: 14px; color: rgba(255,255,255,0.55); line-height: 1.55; }
+
+  .demo-card { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.07); border-radius: 14px; padding: 20px 24px; }
+  .demo-input { background: rgba(255,255,255,0.02); border: 1px solid rgba(255,255,255,0.05); border-radius: 14px; padding: 20px 24px; margin-bottom: 16px; }
+
+  .spectrum { display: flex; height: 6px; border-radius: 3px; overflow: hidden; gap: 2px; margin-bottom: 18px; }
+  .spectrum-seg { flex: 1; transition: opacity 0.25s ease; cursor: pointer; }
+
+  .clause-row { padding: 10px 14px; border-radius: 8px; cursor: pointer; border-left: 3px solid transparent; transition: all 0.4s ease; opacity: 0; transform: translateY(10px); }
+  .clause-row.visible { opacity: 1; transform: translateY(0); }
+  .clause-row.active { background: rgba(255,255,255,0.035); }
+  .clause-label { font-family: 'JetBrains Mono', monospace; font-size: 9px; font-weight: 700; opacity: 0.5; margin-top: 6px; flex-shrink: 0; transition: opacity 0.2s; }
+  .clause-row.active .clause-label { opacity: 1; }
+  .clause-text { font-family: 'Crimson Pro', Georgia, serif; font-size: 16px; line-height: 1.65; color: rgba(255,255,255,0.7); transition: color 0.2s; }
+  .clause-row.active .clause-text { color: rgba(255,255,255,0.9); }
+  .clause-meta { font-family: 'JetBrains Mono', monospace; font-size: 11px; opacity: 0.8; margin-top: 5px; display: none; }
+  .clause-row.active .clause-meta { display: block; }
+
+  .detail-panel { margin-top: 16px; padding: 18px 20px; background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.08); border-radius: 12px; display: none; }
+  .detail-panel.show { display: block; }
+  .detail-flex { display: flex; gap: 24px; flex-wrap: wrap; }
+  .detail-left { flex: 1 1 260px; }
+  .detail-right { flex: 0 0 200px; }
+  .score-row { display: flex; align-items: center; gap: 8px; margin-bottom: 5px; }
+  .score-label { font-family: 'JetBrains Mono', monospace; font-size: 10px; width: 24px; text-align: right; }
+  .score-track { flex: 1; height: 5px; background: #1a1a2e; border-radius: 3px; overflow: hidden; }
+  .score-fill { height: 100%; border-radius: 3px; transition: width 0.4s ease; }
+  .score-val { font-family: 'JetBrains Mono', monospace; font-size: 10px; width: 28px; }
+
+  .step { display: flex; gap: 22px; padding: 26px 0; border-top: 1px solid rgba(255,255,255,0.04); }
+  .step-num { font-family: 'JetBrains Mono', monospace; font-size: 13px; font-weight: 700; flex-shrink: 0; margin-top: 2px; }
+  .step-title { font-family: 'JetBrains Mono', monospace; font-size: 14px; color: rgba(255,255,255,0.8); font-weight: 600; margin-bottom: 8px; }
+  .step-desc { font-size: 15px; line-height: 1.75; color: rgba(255,255,255,0.6); }
+
+  .insight-box { margin-top: 48px; padding: 20px 24px; border-radius: 12px; background: rgba(74,158,255,0.04); border: 1px solid rgba(74,158,255,0.12); }
+
+  .code-block { background: rgba(255,255,255,0.025); border: 1px solid rgba(255,255,255,0.06); border-radius: 12px; padding: 20px 24px; overflow: auto; font-family: 'JetBrains Mono', monospace; font-size: 13px; line-height: 1.75; color: rgba(255,255,255,0.75); white-space: pre-wrap; word-break: break-word; }
+
+  .divider { border-top: 1px solid rgba(255,255,255,0.04); }
+
+  @media (max-width: 600px) {
+    .problem-grid { grid-template-columns: 1fr; }
+    .detail-flex { flex-direction: column; }
+    .detail-right { flex: auto; }
+  }
+</style>
+</head>
+<body>
+
+<!-- HERO -->
+<section class="hero">
+  <div class="hero-glow"></div>
+  <div class="hero-inner">
+    <div class="hero-tag">Paratext Engine</div>
+    <h1 class="hero-title">Language choice is <span class="gradient">cognitive metadata</span></h1>
+    <p class="hero-sub">When an AI generates the same idea in six languages, the language that fits best reveals how that idea wants to be expressed. Paratext makes that signal accessible as structured data.</p>
+
+    <div class="pills">
+      <span class="pill"><span class="pill-dot" style="background:#4A9EFF"></span><span class="pill-label" style="color:#4A9EFF">DE</span><span class="pill-mode">Precision</span></span>
+      <span class="pill"><span class="pill-dot" style="background:#FF6B6B"></span><span class="pill-label" style="color:#FF6B6B">ES</span><span class="pill-mode">Embodiment</span></span>
+      <span class="pill"><span class="pill-dot" style="background:#B48EFF"></span><span class="pill-label" style="color:#B48EFF">FR</span><span class="pill-mode">Nuance</span></span>
+      <span class="pill"><span class="pill-dot" style="background:#4ECDC4"></span><span class="pill-label" style="color:#4ECDC4">JA</span><span class="pill-mode">Relational</span></span>
+      <span class="pill"><span class="pill-dot" style="background:#FFB347"></span><span class="pill-label" style="color:#FFB347">PT</span><span class="pill-mode">Warmth</span></span>
+    </div>
+
+    <div class="btn-row">
+      <a href="https://www.npmjs.com/package/paratext-envelope" target="_blank" class="btn btn-primary">npm install paratext-envelope</a>
+      <a href="https://github.com/mdiskint/paratext-envelope" target="_blank" class="btn btn-secondary">GitHub &rarr;</a>
+    </div>
+  </div>
+  <div class="scroll-line"></div>
+</section>
+
+<!-- PROBLEM -->
+<section style="padding:130px 0 100px">
+  <div class="section-wrap">
+    <div class="label">The Problem</div>
+    <h2 class="serif" style="font-size:clamp(28px,3.5vw,42px);font-weight:300;line-height:1.3;margin:20px 0 36px">
+      AI agents communicate in flat text.<br>
+      <span style="color:rgba(255,255,255,0.45)">All the signal about how something was expressed gets lost.</span>
+    </h2>
+    <div class="problem-grid">
+      <div class="problem-card"><div class="problem-card-title">Confidence</div><div class="problem-card-desc">"likely 25-30%" &mdash; how confident, really?</div></div>
+      <div class="problem-card"><div class="problem-card-title">Register</div><div class="problem-card-desc">Is this precision or hedging?</div></div>
+      <div class="problem-card"><div class="problem-card-title">Cognitive mode</div><div class="problem-card-desc">Analytical? Embodied? Relational?</div></div>
+      <div class="problem-card"><div class="problem-card-title">Intent</div><div class="problem-card-desc">Informing? Warning? Seeking consensus?</div></div>
+    </div>
+    <p style="margin-top:32px;font-size:16px;line-height:1.8;color:rgba(255,255,255,0.58);max-width:580px">
+      The receiving agent re-infers everything from scratch. Wasted compute and lost fidelity. Paratext generates this metadata through competitive multilingual generation and delivers it as a JSON sidecar alongside every message.
+    </p>
+  </div>
+</section>
+
+<!-- DEMO -->
+<section style="padding:80px 0 130px">
+  <div style="max-width:880px;margin:0 auto;padding:0 28px">
+    <div style="text-align:center;margin-bottom:50px">
+      <div class="label">Interactive Demo</div>
+      <h2 class="serif" style="font-size:clamp(24px,3vw,36px);font-weight:300;line-height:1.4;color:rgba(255,255,255,0.88);margin-top:16px">
+        Hover a clause to see why it routed where it did
+      </h2>
+    </div>
+
+    <div style="max-width:680px;margin:0 auto">
+      <!-- Input -->
+      <div class="demo-input">
+        <div class="label" style="margin-bottom:10px">Input</div>
+        <p class="serif" style="font-size:17px;line-height:1.7;color:rgba(255,255,255,0.6);font-style:italic">
+          &ldquo;Based on the trend, it is likely around 25-30%, but I would not bet the farm on it &mdash; there is a lot we are not seeing, and the team needs to feel confident before we commit.&rdquo;
+        </p>
+      </div>
+
+      <!-- Output -->
+      <div class="demo-card">
+        <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:14px">
+          <span class="label">Routed Output</span>
+          <span class="label" style="color:rgba(255,255,255,0.3)">4 clauses &middot; 4 registers</span>
+        </div>
+
+        <div class="spectrum" id="spectrum"></div>
+
+        <div id="clauses"></div>
+
+        <div class="detail-panel" id="detail">
+          <div class="detail-flex">
+            <div class="detail-left">
+              <div class="label" id="detail-lang-label" style="margin-bottom:10px;font-weight:700"></div>
+              <p class="serif" id="detail-native" style="font-size:15px;line-height:1.65;color:rgba(255,255,255,0.7);margin:0 0 6px"></p>
+              <p class="serif" id="detail-back" style="font-size:13px;color:rgba(255,255,255,0.3);font-style:italic;margin:0"></p>
+            </div>
+            <div class="detail-right">
+              <div class="label" style="margin-bottom:10px">Competition</div>
+              <div id="score-bars"></div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section class="divider" style="padding:130px 0">
+  <div class="section-wrap">
+    <div class="label">How It Works</div>
+    <h2 class="serif" style="font-size:clamp(24px,3vw,36px);font-weight:300;line-height:1.4;color:rgba(255,255,255,0.88);margin:20px 0 48px">
+      Competitive multilingual generation, not translation
+    </h2>
+
+    <div class="step"><span class="step-num" style="color:rgba(255,255,255,0.35)">01</span><div><div class="step-title">Segment</div><p class="step-desc">Input text splits into cognitive clauses &mdash; one thought per clause, based on meaning boundaries rather than punctuation.</p></div></div>
+    <div class="step"><span class="step-num" style="color:#4A9EFF">02</span><div><div class="step-title">Generate</div><p class="step-desc">Each clause is independently generated in 6 languages in parallel. Not translated &mdash; natively generated. Each language activates different computational pathways.</p></div></div>
+    <div class="step"><span class="step-num" style="color:#B48EFF">03</span><div><div class="step-title">Score</div><p class="step-desc">Every version is scored for naturalness (0.0&ndash;1.0). The language where the idea fits most naturally wins. Cognitive mode identified from the competition pattern.</p></div></div>
+    <div class="step"><span class="step-num" style="color:#4ECDC4">04</span><div><div class="step-title">Route</div><p class="step-desc">Two output paths: agent-to-agent delivers each clause in its winning language (the switch IS the metadata). Human-facing delivers back-translated version with annotations.</p></div></div>
+
+    <div class="insight-box">
+      <div class="mono" style="font-size:11px;color:#4A9EFF;margin-bottom:8px;font-weight:600">Key Insight</div>
+      <p style="font-size:15px;line-height:1.75;color:rgba(255,255,255,0.65);margin:0">
+        Different languages do not just rephrase &mdash; they deform reasoning trajectories. German compounds make precision relationships atomic. Spanish embodiment verbs surface physical reasoning. Japanese relational grammar reveals social-hierarchical thinking. The language that wins tells you how that thought naturally wants to be structured.
+      </p>
+    </div>
+  </div>
+</section>
+
+<!-- CODE -->
+<section class="divider" style="padding:130px 0">
+  <div class="section-wrap">
+    <div class="label">Integration</div>
+    <h2 class="serif" style="font-size:clamp(24px,3vw,36px);font-weight:300;line-height:1.4;color:rgba(255,255,255,0.88);margin:20px 0 16px">
+      Wrap any agent message in three lines
+    </h2>
+    <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,0.58);margin-bottom:36px;max-width:540px">
+      paratext-envelope is middleware. It sits between agents and enriches every message with clause-level cognitive metadata.
+    </p>
+
+    <pre class="code-block" style="margin-bottom:20px">import { generateEnvelope } from 'paratext-envelope';
+
+const envelope = await generateEnvelope(
+  agentMessage,
+  { context: 'risk-assessment' }
+);
+
+// envelope.clauses[0].winner       "german"
+// envelope.clauses[0].confidence   0.91
+// envelope.clauses[0].scores       { german: 0.91, ... }
+// envelope.metadata.dominant_register</pre>
+
+    <pre class="code-block">import { summarizeEnvelope } from 'paratext-envelope';
+
+for (const clause of envelope.clauses) {
+  if (clause.winner === 'french' &amp;&amp; clause.confidence > 0.8) {
+    // High-confidence uncertainty detected
+    // Flag for human review
+  }
+}</pre>
+  </div>
+</section>
+
+<!-- FOOTER -->
+<section class="divider" style="padding:130px 0 180px">
+  <div class="section-wrap" style="text-align:center">
+    <h2 class="serif" style="font-size:clamp(24px,3vw,36px);font-weight:300;line-height:1.4;color:rgba(255,255,255,0.88);margin-bottom:14px">
+      Try it. Break it. Tell me what is wrong.
+    </h2>
+    <p style="font-size:15px;color:rgba(255,255,255,0.5);margin-bottom:48px">
+      MIT licensed &middot; v0.1.0 &middot; Works with any LLM &mdash; Claude API is the current default.
+    </p>
+
+    <div class="btn-row">
+      <a href="https://www.npmjs.com/package/paratext-envelope" target="_blank" class="btn btn-primary">npm install paratext-envelope</a>
+      <a href="https://github.com/mdiskint/paratext-envelope" target="_blank" class="btn btn-secondary">GitHub</a>
+      <a href="https://paratext-two.vercel.app" target="_blank" class="btn btn-secondary">Writing Tool Demo</a>
+    </div>
+
+    <div style="margin-top:90px;padding-top:36px;border-top:1px solid rgba(255,255,255,0.04)">
+      <p class="mono" style="font-size:11px;color:rgba(255,255,255,0.25)">
+        Built by <a href="https://github.com/mdiskint" target="_blank" style="color:rgba(255,255,255,0.45)">Michael Diskint</a> // 2026
+      </p>
+    </div>
+  </div>
+</section>
+
+<script>
+var REGS = [
+  { key:"german", label:"DE", mode:"Precision", color:"#4A9EFF" },
+  { key:"spanish", label:"ES", mode:"Embodiment", color:"#FF6B6B" },
+  { key:"french", label:"FR", mode:"Nuance", color:"#B48EFF" },
+  { key:"japanese", label:"JA", mode:"Relational", color:"#4ECDC4" },
+  { key:"portuguese", label:"PT", mode:"Warmth", color:"#FFB347" },
+  { key:"english", label:"EN", mode:"Baseline", color:"#6B6B7B" }
+];
+
+var CLAUSES = [
+  { text:"Based on the trend, it is likely around 25-30%", winner:"german", conf:91, native:"Trendbasiert liegt die Wahrscheinlichkeit bei 25-30%", back:"The probability lies trend-based at 25-30%", scores:[91,38,72,45,41,68] },
+  { text:"but I would not bet the farm on it", winner:"spanish", conf:86, native:"pero no me jugar\u00eda todo a esa carta", back:"but I would not gamble everything on that card", scores:[44,86,71,52,78,55] },
+  { text:"there is a lot we are not seeing", winner:"french", conf:88, native:"il reste beaucoup de zones d\u2019ombre", back:"there remain many shadow zones we have not explored", scores:[62,51,88,67,48,57] },
+  { text:"the team needs to feel confident before we commit", winner:"japanese", conf:83, native:"\u30C1\u30FC\u30E0\u304C\u5B89\u5FC3\u3057\u3066\u524D\u306B\u9032\u3081\u308B\u3088\u3046\u306B\u3059\u308B\u5FC5\u8981\u304C\u3042\u308A\u307E\u3059", back:"we need to ensure the team can move forward with peace of mind", scores:[39,65,58,83,72,47] }
+];
+
+function findReg(key) {
+  for (var i = 0; i < REGS.length; i++) {
+    if (REGS[i].key === key) return REGS[i];
+  }
+  return REGS[5];
+}
+
+var activeClause = null;
+
+function buildSpectrum() {
+  var el = document.getElementById("spectrum");
+  CLAUSES.forEach(function(c, i) {
+    var seg = document.createElement("div");
+    seg.className = "spectrum-seg";
+    seg.style.background = findReg(c.winner).color;
+    seg.addEventListener("mouseenter", function() { setActive(i); });
+    seg.addEventListener("mouseleave", function() { setActive(null); });
+    el.appendChild(seg);
+  });
+}
+
+function buildClauses() {
+  var container = document.getElementById("clauses");
+  CLAUSES.forEach(function(clause, i) {
+    var reg = findReg(clause.winner);
+    var row = document.createElement("div");
+    row.className = "clause-row";
+    row.id = "clause-" + i;
+    row.innerHTML =
+      '<div style="display:flex;align-items:flex-start;gap:10px">' +
+        '<span class="clause-label" style="color:' + reg.color + '">' + reg.label + '</span>' +
+        '<div style="flex:1">' +
+          '<span class="clause-text">' + clause.text + '</span>' +
+          '<div class="clause-meta" style="color:' + reg.color + '">' + reg.mode + ' | ' + clause.conf + '% confidence</div>' +
+        '</div>' +
+      '</div>';
+    row.addEventListener("mouseenter", function() { setActive(i); });
+    row.addEventListener("mouseleave", function() { setActive(null); });
+    container.appendChild(row);
+
+    setTimeout(function() { row.classList.add("visible"); }, 500 + i * 400);
+  });
+}
+
+function buildScoreBars(scores, winner) {
+  var container = document.getElementById("score-bars");
+  container.innerHTML = "";
+  REGS.forEach(function(r, i) {
+    var w = r.key === winner;
+    var row = document.createElement("div");
+    row.className = "score-row";
+    row.innerHTML =
+      '<span class="score-label" style="color:' + (w ? r.color : "#555") + '">' + r.label + '</span>' +
+      '<div class="score-track"><div class="score-fill" style="width:' + scores[i] + '%;background:' + (w ? r.color : "rgba(100,100,100,0.3)") + '"></div></div>' +
+      '<span class="score-val" style="color:' + (w ? r.color : "#444") + '">' + scores[i] + '</span>';
+    container.appendChild(row);
+  });
+}
+
+function setActive(idx) {
+  activeClause = idx;
+
+  // Update spectrum
+  var segs = document.querySelectorAll(".spectrum-seg");
+  segs.forEach(function(seg, i) {
+    seg.style.opacity = (idx === null || idx === i) ? "1" : "0.2";
+  });
+
+  // Update clauses
+  CLAUSES.forEach(function(clause, i) {
+    var row = document.getElementById("clause-" + i);
+    var reg = findReg(clause.winner);
+    if (i === idx) {
+      row.classList.add("active");
+      row.style.borderLeftColor = reg.color;
+    } else {
+      row.classList.remove("active");
+      row.style.borderLeftColor = "transparent";
+    }
+  });
+
+  // Update detail
+  var panel = document.getElementById("detail");
+  if (idx !== null) {
+    var c = CLAUSES[idx];
+    var r = findReg(c.winner);
+    document.getElementById("detail-lang-label").style.color = r.color;
+    document.getElementById("detail-lang-label").textContent = "Winning Language";
+    document.getElementById("detail-native").textContent = c.native;
+    document.getElementById("detail-back").textContent = "\u2192 " + c.back;
+    panel.style.borderColor = r.color + "30";
+    buildScoreBars(c.scores, c.winner);
+    panel.classList.add("show");
+  } else {
+    panel.classList.remove("show");
+  }
+}
+
+buildSpectrum();
+buildClauses();
+</script>
+</body>
+</html>

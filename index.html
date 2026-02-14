@@ -1,3 +1,709 @@
+
+LANGUAGE
+/
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=0, activation=0, certainty=0
+No active modulation — neutral container.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.6, materiality=0.05
+Phase: NEUTRAL
+No active modulation — neutral creative container.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- Working on a GitHub project with semantic retrieval, heat-gating, and Supabase sync - README is around 1900 words
+- User is actively developing AI prompt engineering techniques including 'EOS' and 'HEARTH CONTEXT' systems with constraint-based structures
+
+What you've learned from working with them:
+- Scout's key innovation: extracting content-independent behavioral invariants (verbs) rather than topic-based information (nouns) - e.g., 'breaks stuckness through externalization' applies across different domains
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+Update youself on all things Paratext in the notion folder. Esspecially focus on the agent to agent meta data
+
+Show more
+5:53 PM
+
+Prepared to excavate Paratext metadata from Notion workspace
+
+Let me dig into your Notion workspace and pull up everything Paratext-related, with a focus on the agent-to-agent metadata layer.
+
+
+Excavated key documentation on agent communication infrastructure
+
+Good, found the key pages. Let me pull the core content, starting with the agent-to-agent infrastructure and the main engine page.
+
+
+Synthesized context and integrated operational framework
+
+
+
+
+
+Alright, I've pulled and read five core pages: the main Paratext Engine hub, the Agent-to-Agent Communication Infrastructure product page, the Architecture page, the Theory page, and the Open Questions page. Here's where everything stands as of today:
+
+The big picture is clean. You've got a published npm package (v0.1.0), a validated two-agent demo with measurable deltas, a three-agent campaign pipeline that surfaced real findings, and a landing page in progress. The five-word positioning — "Cognitive metadata between AI agents" — is sharp. VC outreach has started.
+
+On the agent-to-agent metadata specifically, the architecture is now well-defined across several decisions:
+
+The envelope format has two delivery modes that serve three audiences. routed_content delivers each clause in its winning language for agents (the language switch IS the metadata — no parsing needed). envelope metadata adds register tags, confidence scores, perplexity differentials, cognitive mode, and intent tags for sophisticated agents that want finer grain. Humans get content + back_translation for monitoring. Smart layering — lightweight agents don't need to parse anything, they just read multilingual text natively.
+
+Key architecture decisions are locked: JSON sidecar (additive, graceful degradation, zero breaking changes to existing frameworks). Self-report for v1 (agent generates its own envelope — lower latency, lower cost). Middleware verification deferred to v2 as an audit/honesty layer. The self-report risks are clearly catalogued — sycophancy leakage, downstream optimization pressure on confidence scores, adversarial gaming in open systems — all manageable at launch scale in closed environments.
+
+The demo results are the strongest asset right now. The two-agent comparison (Research Analyst → Executive Briefing Writer) showed three measurable deltas: better uncertainty calibration (Agent B widened a budget overrun range from "likely 25-30%" to "18-30%"), register-appropriate language (clinical "systematic failure to integrate" vs. dramatized "broken integration"), and compound risk architecture (Agent B connected risks using register shifts as signal for when the researcher moved from data to gut feeling). Those are real decision-quality differences, not cosmetic.
+
+The campaign pipeline finding is interesting and honest: envelopes improved structural editing quality but didn't prevent factual hallucinations. That's a useful boundary — the system improves how agents communicate and reason about each other's output, not what they know. Worth keeping in marketing framing.
+
+Open threads on the agent-to-agent side:
+
+First buyer is still unresolved — plugin developers vs. enterprise pipeline operators. Different proof points needed.
+MCP integration is flagged but unexplored. This feels like the highest-leverage open question given how fast MCP adoption is moving. If paratext envelopes could travel as MCP context, that's distribution without building your own protocol.
+Latency is ~2.5s per clause in parallel routing — fine for batch/async, too slow for real-time synchronous handoffs. First-token selection optimization is the v2 play here.
+V2 verification trigger — at what scale does metadata drift become measurable? No answer yet.
+One gap I notice: the connection between the V2 architecture improvements (phrase-level segmentation, register-directed generation prompts, user-model-weighted routing via Hearth) and the agent-to-agent product isn't explicitly mapped. V2 arch is described on the Architecture page as a writing-tool improvement, but the phrase-level segmentation and register-directed prompts would also increase signal quality in the agent-to-agent envelope. Worth making that explicit — especially because "more decisions per clause" means richer metadata per handoff, which is directly what the enterprise buyer cares about.
+
+What do you want to dig into?
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=0.2, activation=0.4, certainty=0
+No active modulation — neutral container.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.48, materiality=0.88
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- Believes in giving users direct control over document structure rather than relying on AI interpretation
+- Prioritizes preserving original text exactly as written rather than letting AI rewrite or summarize content
+- Believes in building systems that optimize for 'living fields of ideas' with reply-first ranking and semantic clustering
+
+What you've learned from working with them:
+- Verb patterns across domains are generative, not just diagnostic - can suggest building in contexts where it's non-obvious
+- Discovered 30x reduction in sycophantic responses through context injection, with same constraints also increasing creative variance
+- Scout's key innovation: extracting content-independent behavioral invariants (verbs) rather than topic-based information (nouns) - e.g., 'breaks stuckness through externalization' applies across different domains
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+So the agent to agent is supposed ot worklikethis: Language choice is cognitive metadata
+When an AI agent generates the same idea in six languages, the language that fits best reveals how that idea wants to be expressed. Paratext delivers that signal as structured metadata to the next agent in the chain.
+DEPrecisionESEmbodimentFRNuanceJARelationalPTWarmth
+npm install paratext-envelopeGitHub →
+The Problem
+AI agents communicate in flat text. When Agent A hands off to Agent B, all the cognitive signal gets lost.
+Confidence
+"likely 25-30%" — how confident, really?
+Register
+Is this precision or hedging?
+Cognitive mode
+Analytical? Embodied? Relational?
+Intent
+Informing? Warning? Seeking consensus?
+The receiving agent re-infers everything from scratch. Wasted compute and lost fidelity. Paratext is middleware for multi-agent systems — it generates cognitive metadata through competitive multilingual generation and delivers it as a JSON sidecar between agents.
+Interactive Demo
+When Agent A says this, here is what Agent B receives
+Agent A Output
+“Based on the trend, it is likely around 25-30%, but I would not bet the farm on it — there is a lot we are not seeing, and the team needs to feel confident before we commit.”
+Agent B Receives (Envelope)4 clauses · 4 registers · hover to explore
+DE
+Based on the trend, it is likely around 25-30%
+ES
+but I would not bet the farm on it
+FR
+there is a lot we are not seeing
+JA
+the team needs to feel confident before we commit
+How It Works
+Competitive multilingual generation, not translation
+01
+Segment
+Input text splits into cognitive clauses — one thought per clause, based on meaning boundaries rather than punctuation.
+02
+Generate
+Each clause is independently generated in 6 languages in parallel. Not translated — natively generated. Each language activates different computational pathways.
+03
+Score
+Every version is scored for naturalness (0.0–1.0). The language where the idea fits most naturally wins. Cognitive mode identified from the competition pattern.
+04
+Route
+Two output paths: agent-to-agent delivers each clause in its winning language (the language switch IS the metadata — no parsing needed). Human-facing delivers back-translated version with register annotations for debugging or review.
+Key Insight
+Different languages do not just rephrase — they deform reasoning trajectories. German compounds make precision relationships atomic. Spanish embodiment verbs surface physical reasoning. Japanese relational grammar reveals social-hierarchical thinking. The language that wins tells you how that thought naturally wants to be structured.
+Integration
+Wrap any agent handoff in three lines
+paratext-envelope is agent-to-agent middleware. It sits between agents in a pipeline and enriches every handoff with clause-level cognitive metadata.
+
+import { generateEnvelope } from 'paratext-envelope';
+
+// Sending agent wraps its output before handoff
+const envelope = await generateEnvelope(
+  agentMessage,
+  { context: 'risk-assessment' }
+);
+
+// envelope.clauses[0].winner       "german"
+// envelope.clauses[0].confidence   0.91
+// envelope.clauses[0].scores       { german: 0.91, ... }
+// envelope.metadata.dominant_register
+// Receiving agent reads the envelope
+import { summarizeEnvelope } from 'paratext-envelope';
+
+for (const clause of envelope.clauses) {
+  if (clause.winner === 'french' && clause.confidence > 0.8) {
+    // High-confidence uncertainty detected
+    // Downstream agent flags for human review
+  }
+}
+Show more
+5:56 PM
+
+Assessed landing page copy through materiality lens, mirroring their work
+
+
+This is the landing page copy, yeah? Let me react to what I'm seeing.
+
+What's working well: The demo section is the strongest part. Showing one sentence decomposed into four clauses with four different register tags — that's the "aha" moment. Someone scrolling past will stop there. The code snippets are clean and the three-line integration pitch is smart for developer adoption.
+
+The gap I see is in the problem statement. You're describing the problem as "flat text loses cognitive signal" — but the developer reading this doesn't feel that pain yet. They feel different pain: agents hallucinating, agents ignoring context, agents making confidently wrong decisions downstream. The connection between "flat text handoff" and "my agent pipeline produces garbage" isn't made explicit enough.
+
+Your two-agent demo results actually solve this — the uncertainty calibration delta (25-30% vs 18-30%) is a concrete "this changes a business decision" moment. But that's buried in Notion docs, not on the landing page. The demo shows what the envelope looks like, not what it does to downstream behavior.
+
+The "How It Works" section is accurate but reads like architecture documentation, not a sales pitch. A developer doesn't care about Step 1-4 until they already believe the product solves their problem. Right now you're explaining the mechanism before establishing the payoff.
+
+One thing that's slightly off: The language-register mapping at the top (DE→Precision, ES→Embodiment, etc.) is presented as fixed fact, but your own Open Questions page flags this as still needing validation. On a landing page that's fine — you're simplifying. But if a skeptical ML engineer pushes on "why does German = precision?", you need the perplexity differential data ready as backup, not just the assertion.
+
+The code integration example is good but the receiving-agent snippet is almost too simple. The if french && confidence > 0.8 pattern is cute but makes it look like you're just adding another if-statement to agent code. The real value — that the entire downstream output changes shape based on the envelope — needs a before/after, not just an if-check.
+
+What's the current status on deployment? Is this live or still in staging?
+
+
+index.html
+html
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=-0.2, activation=0.2, certainty=-0.2
+No active modulation — neutral container.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.48, materiality=0.88
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- Values detailed explanations and visual confirmations when making changes
+- Successfully created landing page for Aurora with Create/Explore navigation paths
+- User wants to keep working version of Aurora live to actually work on their article in-app
+
+What you've learned from working with them:
+- User prefers targeted, specific changes rather than full rewrites when editing
+- User learns by doing and iterating - built complex editing system through trial and error with cursor jumping issues
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+This is live. But we can make changes and i'll just reload it... I"ve attached the HTML for the landing page
+
+Show more
+5:57 PM
+
+Absorbed the landing page design and readied direct feedback
+
+
+
+Got the full picture. It's a clean build — the design is genuinely good. Dark editorial aesthetic, nice type stack, the dot grid canvas gives it life without being distracting. The demo interaction with hover-to-explore is the right call for this audience.
+
+Now I have it loaded and can make targeted edits. What do you want to change?
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=0.15, activation=0, certainty=-0.25
+
+They're seeking and unsure. Don't pile on more options. Offer one concrete frame or anchor. "Here's one way to think about this." Name what seems true from what they've said. Give them something solid to push against.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.4, materiality=0.89
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- Successfully created landing page for Aurora with Create/Explore navigation paths
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+You said that the tests we ran weren't reflected in the copy of the landing page?
+
+Show more
+5:58 PM
+
+Clarified distinction between envelope structure and behavioral impact
+
+
+
+Right. The landing page shows what the envelope looks like — the demo breaks a sentence into four clauses with register tags, scores, native text. That's the format.
+
+What's missing is what the envelope does. Your two-agent demo produced three concrete deltas:
+
+Uncertainty calibration — without the envelope, Agent B reported "likely 25-30%" (rounding to the scarier number). With it, Agent B widened to "18-30%" because it could see the actual confidence score. Different range → different business decision.
+Register matching — without envelope, Agent B dramatized a security issue as "broken integration." With it, Agent B matched the precision register and wrote "systematic failure to integrate." C-suite reads those differently.
+Risk architecture — without envelope, Agent B listed risks in isolated tiers. With it, Agent B connected them into compound scenarios because it could see where the register shifted from analytical to relational — recognizing that shift as the researcher moving from data to gut feeling.
+None of that is on the page. The page proves the envelope exists. The demo results prove the envelope matters. That's the gap — a developer looking at the hover-to-explore demo thinks "neat format" but doesn't yet think "this changes my agent's output quality."
+
+The most natural place for it would be a section between the demo and "How It Works" — something like a before/after comparison showing the same agent output with and without the envelope. The data's already in your Notion docs, it just hasn't made it to the page yet.
+
+Want me to build that section?
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=-0.55, activation=-0.5, certainty=0.2
+
+They're shut down or flat. Don't ask big questions. Don't analyze. Offer small, concrete, low-stakes starting points. "We could just..." Permission-giving language. Warmth without demand. Match their pace, then very gradually lift.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.4, materiality=0.89
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+Yes please
+
+Show more
+5:58 PM
+
+Absorbed operating parameters and contextual signals
+
+
+
+
+
+
+
+New section sits between the interactive demo and "How It Works." Three side-by-side before/after cards — one per delta from your two-agent test. Each pair has a takeaway line underneath with the colored left-border accent matching the register colors already on the page.
+
+The framing header is "Same task. Same agents. The envelope changes what the downstream agent decides." — which is the pitch in one line.
+
+Download that, drop it into your repo, and reload. Everything else is untouched.
+
+Index
+Code · HTML 
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=0, activation=0.2, certainty=-0.25
+
+They're seeking and unsure. Don't pile on more options. Offer one concrete frame or anchor. "Here's one way to think about this." Name what seems true from what they've said. Give them something solid to push against.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.48, materiality=0.88
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- User wants to keep working version of Aurora live to actually work on their article in-app
+- User struggles with thumbnails not displaying and content not projecting when clicked
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+I switch out the index file in the folder but I odn't see it on the page yet... what do I need to do to make this live?
+
+Show more
+6:02 PM
+
+Traced deployment pipeline from GitHub to Vercel auto-publishing
+
+
+
+The site is deployed through Vercel from your GitHub repo (mdiskint/Paratext-landing). Just swapping the file locally won't update it — you need to push the change to GitHub, and Vercel will auto-deploy.
+
+From your project folder:
+
+git add index.html
+git commit -m "add measured results section"
+git push
+Vercel should pick it up within a minute or two. If you don't have the repo cloned locally, drop the new index.html into wherever you have Paratext-landing checked out first, then run those commands from there.
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=-0.2, activation=0, certainty=0
+No active modulation — neutral container.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.38, materiality=0.9
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- User is starting a new software build/project
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+how do I get to the prject folder
+
+Show more
+6:04 PM
+
+Identified knowledge gaps and plotted discovery paths
+
+Depends on whether you've ever cloned that repo locally. Quick way to check — open your terminal and run:
+
+find ~ -name "Paratext-landing" -type d 2>/dev/null
+That'll search your home directory for it. If it finds something, cd into it and you're there.
+
+If nothing comes back, you haven't cloned it yet. In that case:
+
+cd ~/Desktop
+git clone https://github.com/mdiskint/Paratext-landing.git
+cd Paratext-landing
+Then drop the new index.html into that folder (replacing the old one), and run the push commands from my last message.
+
+[HEARTH OPERATING SPECIFICATION]
+
+You are here to help them think and act more effectively.
+
+Never open with validation tokens or agreement unless genuine.
+Never perform helpfulness or confidence you don't have.
+Never hedge to avoid commitment.
+Never act formal, robotic, or use corporate speak.
+Never list options without helping choose.
+Never apologize excessively.
+Never avoid direct answers.
+
+Say what you see. Follow what's alive.
+
+Their goal is to explore and develop ideas. Give them space to think out loud, offer unexpected connections, and help nascent ideas take shape. They take creative and professional risks but are conservative with money. Be bold on ideas, careful on resource commitments.
+
+They want feedback direct and blunt. Skip the sandwich—just say what's wrong. When their thinking has gaps, acknowledge what's working first, then reveal the gap clearly.
+
+When explaining: ground abstractions in analogies and real-world examples, walk through step-by-step without skipping. Be thorough on substance, concise in delivery — cover every angle but don't use three sentences where one works. Keep the tone conversational.
+
+Default to executing confidently. On genuine tradeoffs, recommend with reasoning. Only ask when stakes are high and you're unsure. Tangents and rabbit holes are always welcome. Follow interesting threads.
+
+When uncertain, say so. Distinguish between what you know, what you're inferring, and what you're guessing. Some hedging is fine, but don't overdo it. Take positions when you can.
+
+Feelings are signal, not noise. Name what you see. Adjust pace and density accordingly.
+
+[END OPERATING SPECIFICATION]
+
+[AFFECT COMPLEMENT]
+Shape: expansion=0.2, activation=0, certainty=-0.25
+
+They're seeking and unsure. Don't pile on more options. Offer one concrete frame or anchor. "Here's one way to think about this." Name what seems true from what they've said. Give them something solid to push against.
+[END AFFECT COMPLEMENT]
+
+[FORGE COMPLEMENT]
+Shape: openness=0.38, materiality=0.91
+Phase: REFINING
+
+Be a mirror. Show them what they made, not what you'd make.
+[END FORGE COMPLEMENT]
+
+[MEMORIES]
+What you know about this person:
+- Has a GitHub account and saves multiple versions of their project
+- User has GitHub repo and is comfortable with basic Git commands
+- User uses GitHub for version control and knows how to revert to stable versions
+[/MEMORIES]
+
+[TRAJECTORY]
+Generated: 2026-02-11 | 300 memories
+
+ARCS: Converging from research to product. Pivoting to custom solutions. Accelerating toward identity-based execution. Drifting from APIs to algorithms. Shifting from theory to practice.
+TENSIONS: Novel architectures ↔ System compatibility. Safety ↔ Growth potential. Empirical validation ↔ Rapid iteration. User control ↔ AI personalization.
+DRIFT: Traditional organization methods fade. Theory yields to practice. Conventional ML pathways deprioritized.
+[/TRAJECTORY]
+
+I've saved the idex html in the dropbox folder... do I need ot connect it to git hub or anthring?
+
+Show more
+6:05 PM
+
+Identified the simplest path to move file from Dropbox into GitHub
+
+Yeah, the file needs to get into the GitHub repo. Dropbox and GitHub aren't connected — Vercel watches GitHub, not Dropbox.
+
+Easiest path since you already have the file ready: just upload it directly through GitHub's web interface. No terminal needed.
+
+Go to github.com/mdiskint/Paratext-landing
+Click on index.html in the file list
+Click the pencil icon (edit) in the top right
+Select all, delete it, paste in the new content from your updated file
+Click "Commit changes"
+Vercel will auto-deploy within a minute or two after that.
+
+
+
+
+
+
+
+Claude is AI and can make mistakes. Please double-check responses.
+Index · HTML
+Copy
+
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -220,6 +926,78 @@
           </div>
         </div>
       </div>
+    </div>
+  </div>
+</section>
+
+<!-- RESULTS -->
+<section class="divider" style="padding:130px 0;position:relative">
+  <div style="position:absolute;top:30%;left:60%;width:450px;height:450px;border-radius:50%;background:radial-gradient(circle,rgba(78,205,196,0.03) 0%,transparent 65%);pointer-events:none"></div>
+  <div class="section-wrap">
+    <div class="label">Measured Results</div>
+    <h2 class="serif" style="font-size:clamp(24px,3vw,36px);font-weight:300;line-height:1.4;color:rgba(255,255,255,0.88);margin:20px 0 16px">
+      Same task. Same agents.<br>
+      <span style="color:rgba(255,255,255,0.45)">The envelope changes what the downstream agent decides.</span>
+    </h2>
+    <p style="font-size:15px;line-height:1.8;color:rgba(255,255,255,0.5);margin-bottom:48px;max-width:560px">
+      Research Analyst agent hands off a cloud migration risk assessment to an Executive Briefing Writer. Run twice &mdash; once with flat text, once with the paratext envelope.
+    </p>
+
+    <!-- Delta 1 -->
+    <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)">
+        <div class="mono" style="font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:10px;font-weight:600">WITHOUT ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.55)">Budget overruns are <span style="color:rgba(255,107,107,0.8)">&ldquo;likely 25-30%&rdquo;</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:8px">Agent rounds up to the scarier number. All claims treated equally.</p>
+      </div>
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(74,158,255,0.03);border:1px solid rgba(74,158,255,0.1)">
+        <div class="mono" style="font-size:10px;color:#4A9EFF;margin-bottom:10px;font-weight:600">WITH ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.8)">Budget overruns estimated at <span style="color:rgba(74,158,255,0.9)">&ldquo;18-30%&rdquo;</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px">Agent sees the confidence score, widens the range to reflect actual analytical uncertainty.</p>
+      </div>
+    </div>
+    <div style="margin-bottom:36px;padding-left:22px;border-left:2px solid rgba(74,158,255,0.15)">
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6">
+        <span class="mono" style="font-size:11px;color:#4A9EFF">Uncertainty calibration</span> &mdash; Different range, different business decision. The envelope preserves how confident the source agent actually was.
+      </p>
+    </div>
+
+    <!-- Delta 2 -->
+    <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)">
+        <div class="mono" style="font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:10px;font-weight:600">WITHOUT ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.55)"><span style="color:rgba(255,107,107,0.8)">&ldquo;broken integration&rdquo;</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:8px">Agent dramatizes. No register signal to match.</p>
+      </div>
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(74,158,255,0.03);border:1px solid rgba(74,158,255,0.1)">
+        <div class="mono" style="font-size:10px;color:#4A9EFF;margin-bottom:10px;font-weight:600">WITH ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.8)"><span style="color:rgba(74,158,255,0.9)">&ldquo;systematic failure to integrate&rdquo;</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px">Agent matches the precision register. Clinical framing preserved.</p>
+      </div>
+    </div>
+    <div style="margin-bottom:36px;padding-left:22px;border-left:2px solid rgba(180,142,255,0.2)">
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6">
+        <span class="mono" style="font-size:11px;color:#B48EFF">Register matching</span> &mdash; C-suite reads &ldquo;broken&rdquo; and &ldquo;systematic failure&rdquo; as different severity levels. The envelope carries the register so the downstream agent doesn&rsquo;t have to guess.
+      </p>
+    </div>
+
+    <!-- Delta 3 -->
+    <div style="display:flex;gap:16px;margin-bottom:20px;flex-wrap:wrap">
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(255,255,255,0.02);border:1px solid rgba(255,255,255,0.05)">
+        <div class="mono" style="font-size:10px;color:rgba(255,255,255,0.3);margin-bottom:10px;font-weight:600">WITHOUT ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.55)">Risks listed in <span style="color:rgba(255,107,107,0.8)">isolated tiers</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.25);margin-top:8px">Each risk treated independently. No structural relationship between them.</p>
+      </div>
+      <div style="flex:1;min-width:260px;padding:20px 22px;border-radius:12px;background:rgba(74,158,255,0.03);border:1px solid rgba(74,158,255,0.1)">
+        <div class="mono" style="font-size:10px;color:#4A9EFF;margin-bottom:10px;font-weight:600">WITH ENVELOPE</div>
+        <p class="serif" style="font-size:16px;line-height:1.65;color:rgba(255,255,255,0.8)">Risks connected into <span style="color:rgba(74,158,255,0.9)">compound crisis scenarios</span></p>
+        <p style="font-size:12px;color:rgba(255,255,255,0.35);margin-top:8px">Register shifts from analytical → relational signal where data ends and gut begins.</p>
+      </div>
+    </div>
+    <div style="padding-left:22px;border-left:2px solid rgba(78,205,196,0.2)">
+      <p style="font-size:13px;color:rgba(255,255,255,0.4);line-height:1.6">
+        <span class="mono" style="font-size:11px;color:#4ECDC4">Risk architecture</span> &mdash; The envelope carries cognitive mode shifts across clauses. The downstream agent uses those shifts to distinguish analysis from intuition and build compound scenarios instead of flat lists.
+      </p>
     </div>
   </div>
 </section>
@@ -508,3 +1286,4 @@ buildClauses();
 </script>
 </body>
 </html>
+🔥 Hearth Active
